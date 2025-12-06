@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Icon Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    canvas {
+      border: 1px solid #ccc;
+      margin: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>YouTube Summarizer Icon Generator</h1>
+  <p>Click the buttons below to generate and download icons</p>
+  
+  <div>
+    <canvas id="icon16" width="16" height="16"></canvas>
+    <canvas id="icon48" width="48" height="48"></canvas>
+    <canvas id="icon128" width="128" height="128"></canvas>
+  </div>
+  
+  <div>
+    <button onclick="generateIcon(16)">Generate & Download 16x16</button>
+    <button onclick="generateIcon(48)">Generate & Download 48x48</button>
+    <button onclick="generateIcon(128)">Generate & Download 128x128</button>
+  </div>
+
+  <script>
+    function generateIcon(size) {
+      const canvas = document.getElementById(`icon${size}`);
+      const ctx = canvas.getContext('2d');
+      
+      // Clear canvas
+      ctx.clearRect(0, 0, size, size);
+      
+      // Background - YouTube red
+      ctx.fillStyle = '#FF0000';
+      ctx.fillRect(0, 0, size, size);
+      
+      // White play button
+      ctx.fillStyle = '#FFFFFF';
+      const centerX = size / 2;
+      const centerY = size / 2;
+      const triangleSize = size * 0.4;
+      
+      ctx.beginPath();
+      ctx.moveTo(centerX - triangleSize * 0.3, centerY - triangleSize * 0.5);
+      ctx.lineTo(centerX - triangleSize * 0.3, centerY + triangleSize * 0.5);
+      ctx.lineTo(centerX + triangleSize * 0.4, centerY);
+      ctx.closePath();
+      ctx.fill();
+      
+      // Add "S" for Summary (optional, for larger icons)
+      if (size >= 48) {
+        ctx.fillStyle = '#FF0000';
+        ctx.font = `bold ${size * 0.4}px Arial`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('S', centerX, centerY);
+      }
+      
+      // Download
+      canvas.toBlob(function(blob) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `icon${size}.png`;
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+    }
+    
+    // Generate all icons on load
+    window.onload = function() {
+      generateIcon(16);
+      setTimeout(() => generateIcon(48), 500);
+      setTimeout(() => generateIcon(128), 1000);
+    };
+  </script>
+</body>
+</html>
+

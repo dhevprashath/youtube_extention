@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Summarizer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📝 YouTube Summarizer</h1>
+      <p class="subtitle">AI-powered video summaries</p>
+    </header>
+
+    <div id="status" class="status"></div>
+
+    <div id="transcriptHelp" class="transcript-help" style="display: none;">
+      <p><strong>📝 How to get transcript:</strong></p>
+      <ol>
+        <li>On the YouTube video page, click the <strong>"⋯" (three dots)</strong> menu below the video</li>
+        <li>Select <strong>"Show transcript"</strong> from the menu</li>
+        <li>Wait for the transcript panel to appear on the right side</li>
+        <li>Come back here and click <strong>"Generate Summary"</strong> again</li>
+      </ol>
+    </div>
+
+    <div class="url-input-section">
+      <label for="youtubeUrl">Or paste YouTube URL:</label>
+      <input type="text" id="youtubeUrl" placeholder="https://www.youtube.com/watch?v=..." />
+      <button id="loadUrlBtn" class="btn btn-secondary">Load Video</button>
+    </div>
+
+    <div id="videoInfo" class="video-info" style="display: none;">
+      <h3>Video Information</h3>
+      <p><strong>Title:</strong> <span id="videoTitle"></span></p>
+      <p><strong>Channel:</strong> <span id="channelName"></span></p>
+      <p><strong>Duration:</strong> <span id="duration"></span></p>
+    </div>
+
+    <div class="actions">
+      <button id="summarizeBtn" class="btn btn-primary">Generate Summary</button>
+      <button id="copyJsonBtn" class="btn btn-secondary" style="display: none;">Copy JSON</button>
+    </div>
+
+    <div id="summaryContainer" class="summary-container" style="display: none;">
+      <div class="tabs">
+        <button class="tab active" data-tab="summary">Summary</button>
+        <button class="tab" data-tab="keypoints">Key Points</button>
+        <button class="tab" data-tab="timestamps">Timestamps</button>
+        <button class="tab" data-tab="faq">FAQ</button>
+        <button class="tab" data-tab="json">JSON</button>
+      </div>
+
+      <div id="summaryTab" class="tab-content active">
+        <div class="summary-section">
+          <h3>Quick Overview</h3>
+          <p id="shortSummary"></p>
+        </div>
+        <div class="summary-section">
+          <h3>📚 Complete Learning Summary</h3>
+          <p id="longSummary" class="detailed-summary"></p>
+        </div>
+      </div>
+
+      <div id="keypointsTab" class="tab-content">
+        <ul id="keyPointsList"></ul>
+      </div>
+
+      <div id="timestampsTab" class="tab-content">
+        <ul id="timestampsList"></ul>
+      </div>
+
+      <div id="faqTab" class="tab-content">
+        <div id="faqList"></div>
+      </div>
+
+      <div id="jsonTab" class="tab-content">
+        <pre id="jsonOutput"></pre>
+      </div>
+    </div>
+
+    <div id="suggestions" class="suggestions" style="display: none;">
+      <h3>Suggestions</h3>
+      <div class="suggestion-item">
+        <strong>Title:</strong> <span id="suggestedTitle"></span>
+      </div>
+      <div class="suggestion-item">
+        <strong>Tags:</strong> <span id="suggestedTags"></span>
+      </div>
+      <div class="suggestion-item">
+        <strong>Description:</strong>
+        <p id="suggestedDescription"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+

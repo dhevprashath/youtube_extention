@@ -1,0 +1,33 @@
+# API Keys and sensitive data
+*.key
+*.env
+.env.local
+config.local.js
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-*
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+
+# Node modules (if you add any build tools)
+node_modules/
+
+# Build outputs
+dist/
+build/

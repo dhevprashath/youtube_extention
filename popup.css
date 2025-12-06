@@ -1,0 +1,405 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  width: 500px;
+  max-height: 700px;
+  overflow-y: auto;
+  background: #f5f5f5;
+}
+
+.container {
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+header h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 14px;
+}
+
+.status {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  display: none;
+}
+
+.status.info {
+  background: #e3f2fd;
+  color: #1976d2;
+  border-left: 4px solid #1976d2;
+}
+
+.status.success {
+  background: #e8f5e9;
+  color: #388e3c;
+  border-left: 4px solid #388e3c;
+}
+
+.status.error {
+  background: #ffebee;
+  color: #d32f2f;
+  border-left: 4px solid #d32f2f;
+}
+
+.status.warning {
+  background: #fff3e0;
+  color: #f57c00;
+  border-left: 4px solid #f57c00;
+}
+
+.url-input-section {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.url-input-section label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.url-input-section input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.url-input-section input:focus {
+  outline: none;
+  border-color: #ff0000;
+}
+
+.url-input-section button {
+  width: 100%;
+}
+
+.transcript-help {
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.transcript-help p {
+  margin-bottom: 10px;
+  color: #856404;
+  font-weight: 600;
+}
+
+.transcript-help ol {
+  margin-left: 20px;
+  color: #856404;
+}
+
+.transcript-help li {
+  margin-bottom: 5px;
+}
+
+.video-info {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.video-info h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.video-info p {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #666;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: #ff0000;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #cc0000;
+}
+
+.btn-primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #2196f3;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #1976d2;
+}
+
+.summary-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: none; /* Hidden by default, shown when summary is ready */
+  margin-top: 15px;
+}
+
+.tabs {
+  display: flex;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.tab:hover {
+  background: #e8e8e8;
+}
+
+.tab.active {
+  color: #ff0000;
+  border-bottom-color: #ff0000;
+  background: white;
+}
+
+.tab-content {
+  display: none;
+  padding: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.tab-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.summary-section {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.summary-section:last-child {
+  border-bottom: none;
+}
+
+.summary-section h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detailed-summary {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #444;
+  white-space: pre-wrap;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 6px;
+  border-left: 3px solid #2196f3;
+}
+
+.tab-content ul {
+  list-style: none;
+}
+
+.tab-content li {
+  padding: 10px;
+  margin-bottom: 8px;
+  background: #f9f9f9;
+  border-radius: 5px;
+  border-left: 3px solid #ff0000;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.tab-content li strong {
+  color: #ff0000;
+  margin-right: 8px;
+}
+
+.key-point-item {
+  padding: 15px !important;
+  margin-bottom: 12px !important;
+  background: #f9f9f9 !important;
+  border-left: 4px solid #2196f3 !important;
+  border-radius: 6px;
+}
+
+.key-point-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.key-point-number {
+  background: #2196f3;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.key-point-time {
+  color: #2196f3;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.key-point-content {
+  color: #444;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-left: 34px;
+}
+
+.faq-item {
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #f9f9f9;
+  border-radius: 5px;
+  border-left: 3px solid #2196f3;
+}
+
+.faq-item strong {
+  display: block;
+  color: #2196f3;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.faq-item p {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+#jsonOutput {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.suggestions {
+  margin-top: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.suggestions h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.suggestion-item {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.suggestion-item strong {
+  display: block;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.suggestion-item span,
+.suggestion-item p {
+  color: #666;
+  line-height: 1.6;
+}
+
